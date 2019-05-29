@@ -1,0 +1,29 @@
+5/24	測試YOLO訓練完成, 可辨識到手部
+
+5/25    測試將YOLO(darkflow)依教學安裝測試
+		Raspberry Pi測試運算量過大, 無法執行 -> 需要使用Movidius NCS
+		尋找NCSDK測試及轉檔資料
+		
+5/26	轉檔測試(mvNCCompile)測試失敗(error code : index out of range)
+		使用其他pb file測試無效
+		重新安裝無效
+
+5/27	測試將tensorflow從1.8.0改為1.12.0 ->轉檔成功
+		初步整合:修改 YOLO 測試範例, 使其可變更全域變數
+
+5/28	測試 TKinter GUI 整合, openCV視窗顯示動作對照並識別方向 -> 成功辨別並變更視力測驗圖片
+		期間遭遇 openCV 視窗不正常關閉 -> 已解決 
+		待 TKinter 程式優化 (頁面來回轉換問題)
+
+5/29 	參照Intel Movidius github中的範例修改 -> 可正常使用 NCS 運算 
+		但無法識別運算後輸出的資料 -> download yolo-movidius 程式集測試 ->
+		因程式針對NCSDK V2.0 編寫, 需要改為NCSDK V1.X 函式寫法 -> 矩陣數字出現科學符號'e'無法轉換
+		
+		
+To Do List : 
+
+1.完成Raspberry Pi上執行YOLO的環境建置
+2.YOLO 模型增加訓練集資料量並修改同一畫面中手部辨識到的數量
+3.YOLO 模型加入新類別(看不清楚)
+4.簡潔化在TKinter 程式上的 YOLO code (just call a function)
+5.openCV 與 TKinter 畫面整合(目前為分開視窗)
